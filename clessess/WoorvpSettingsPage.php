@@ -18,7 +18,7 @@ if( !class_exists( 'WoorvpSettingsPage') ){
                 __( 'Recently View Products', 'woorvp' ),
                 'manage_options',
                 'woorvp_settings',
-                'woorvp_settings_page_callback',
+                'woorvp_settings_page_callback', // in views/admin/settingsPage.php
             );
         }
 
