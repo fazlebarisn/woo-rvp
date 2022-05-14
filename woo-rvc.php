@@ -33,11 +33,11 @@ define( 'WOORVP_URI', plugin_dir_url( __FILE__ ) );
  * Check woocommerce plugin install or not
  */
 if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins') ))){
-    if( class_exists('WoorvpCore') ){
+    if( !class_exists('WoorvpCore') ){
         class WoorvpCore{
             public function __construct()
             {
-                
+                require_once( WOORVP_PATH . "includes/activation.php" );
             }
         }
         $WoorvpCore = new WoorvpCore;
