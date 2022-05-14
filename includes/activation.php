@@ -21,4 +21,4 @@ if( !function_exists( 'woorvpActivation' ) ){
             
         }
     }
-}
+};

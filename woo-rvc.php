@@ -37,7 +37,15 @@ if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         class WoorvpCore{
             public function __construct()
             {
+                // include files
                 require_once( WOORVP_PATH . "includes/activation.php" );
+
+                // include classess
+
+                // add hooks
+                register_activation_hook( __FILE__ , 'woorvpActivation' );
+                
+                // shortcode
             }
         }
         $WoorvpCore = new WoorvpCore;
