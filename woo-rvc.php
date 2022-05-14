@@ -39,12 +39,15 @@ if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
             {
                 // include files
                 require_once( WOORVP_PATH . "includes/activation.php" );
+                require_once( WOORVP_PATH . "views/admin/settingsPage.php" );
 
                 // include classess
+                require_once( WOORVP_PATH . "clessess/WoorvpSettingsPage.php" );
 
                 // add hooks
                 register_activation_hook( __FILE__ , 'woorvpActivation' );
-                
+                add_action('admin_menu', array( $WoorvpSettingsPage , 'createSettingsPage') );
+
                 // shortcode
             }
         }
