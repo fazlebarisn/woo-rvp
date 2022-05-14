@@ -43,10 +43,12 @@ if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 
                 // include classess
                 require_once( WOORVP_PATH . "clessess/WoorvpSettingsPage.php" );
+                require_once( WOORVP_PATH . "clessess/WoorvpSaveSettings.php" );
 
                 // add hooks
                 register_activation_hook( __FILE__ , 'woorvpActivation' );
                 add_action('admin_menu', array( $WoorvpSettingsPage , 'createSettingsPage') );
+                add_action('admin_post_woorvp_save_settings_fields', array( $WoorvpSaveSettings , 'woorvpSaveAdminFirlds') );
 
                 // shortcode
             }
