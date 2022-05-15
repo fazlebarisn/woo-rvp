@@ -24,7 +24,7 @@ function woorvp_settings_page_callback(){
                                 <label for="woorvp_label"><?php _e("Recently view product" , "woorvp") ?></label>
                             </th>
                             <td>
-                                <input type="text" name="woorvp_label" value="<?php echo $settings['woorvp_label']; ?>" id="woorvp_label" class="regular-text">
+                                <input type="text" name="woorvp_label" value="<?php echo $settings['woorvp_label']; ?>" id="woorvp_label" class="regular-text" required>
                             </td>
                         </tr>
                         <tr>
@@ -32,7 +32,7 @@ function woorvp_settings_page_callback(){
                                 <label for="woorvp_num_of_product"><?php _e("Display products number" , "woorvp") ?></label>
                             </th>
                             <td>
-                                <input type="number" name="woorvp_num_of_product" value="<?php echo $settings['woorvp_num_of_product']; ?>" id="woorvp_num_of_product" class="regular-text">
+                                <input type="number" name="woorvp_num_of_product" value="<?php echo $settings['woorvp_num_of_product']; ?>" id="woorvp_num_of_product" class="regular-text" required>
                             </td>
                         </tr>
                         <tr>
