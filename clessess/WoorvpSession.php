@@ -18,6 +18,17 @@ if(!class_exists('WoorvpSession')){
             }
         }
 
+        // Create session name
+        public function woorvpSessionName(){
+            if( is_user_logged_in() ){
+                $user_id = get_current_user_id();
+                $woorvp_session_name = 'woorvp_session' . $user_id;
+            }else{
+                $woorvp_session_name = 'woorvp_session_guest';
+            }
+            return $woorvp_session_name;
+        }
+
     }
     $WoorvpSession = new WoorvpSession;
 
