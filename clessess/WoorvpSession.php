@@ -43,8 +43,12 @@ if(!class_exists('WoorvpSession')){
 
         }
 
-        // get current visitor session product
-        public function woorvpGetProducts(){
+        /**
+         * get current visitor session product
+         * with this function we store product base of session 
+         * @return $products as array 
+         */
+        public function woorvpGetViewProducts(){
 
             $session_name = $this->woorvpSessionName;
 
@@ -53,7 +57,39 @@ if(!class_exists('WoorvpSession')){
             }
 
             return unserialize( $_SESSION[$session_name] );
-            
+
+        }
+        
+        /**
+         * Here we add products in view list
+         *
+         * @return void
+         */
+        public function woorvpCreateViewProductsList(){
+
+            // if it is not product page retuen false
+            if( !is_product() ){
+                return false;
+            }
+
+            // if it is product page create product list
+            $viewed_products = $this->woorvpGetViewProducts;
+
+            // Check is that product is already in list or not
+            if( !in_array( get_the_ID(), $viewed_products ) ){
+                // if not in list, then add this product
+                $viewed_products[] = get_the_ID();
+            }else{
+                // if already in list, do not add
+                $current_product_key = array_search( get_the_ID() , $viewed_products );
+                unset( $viewed_products[ $current_product_key ] );
+                $viewed_products[] = get_the_ID();
+            }
+
+            // Update session
+            $session_name = $this->woorvpSessionName;
+            $_SESSION[$session_name] = $viewed_products;
+
         }
 
     }
