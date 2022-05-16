@@ -48,7 +48,11 @@ if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 
                 // add hooks
                 register_activation_hook( __FILE__ , 'woorvpActivation' );
+                
                 add_action('init', array( $WoorvpSession , 'woorvpStartSession'),10 );
+                add_action('init', array( $WoorvpSession , 'woorvpInitSession'),15 );
+                add_action('init', array( $WoorvpSession , 'woorvpCreateViewProductsList') );
+
                 add_action('admin_menu', array( $WoorvpSettingsPage , 'createSettingsPage') );
                 add_action('admin_post_woorvp_save_settings_fields', array( $WoorvpSaveSettings , 'woorvpSaveAdminFirlds') );
 
