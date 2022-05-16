@@ -62,3 +62,12 @@ if( in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         $WoorvpCore = new WoorvpCore;
     }
 }
+
+
+add_action('woocommerce_before_single_product', 'woocommerce_before_single_product_cc' );
+function woocommerce_before_single_product_cc(){
+    $WoorvpSession = new WoorvpSession;
+    var_dump($WoorvpSession->woorvpCreateViewProductsList());
+    var_dump($WoorvpSession->woorvpSessionName());
+    
+}

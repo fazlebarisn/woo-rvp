@@ -35,7 +35,7 @@ if(!class_exists('WoorvpSession')){
         // Init session for current user
         public function woorvpInitSession(){
 
-            $session_name = $this->woorvpSessionName;
+            $session_name = $this->woorvpSessionName();
             
             if( !isset( $_SESSION[$session_name] ) ){
                 $_SESSION[$session_name] = serialize( array() );
@@ -50,16 +50,18 @@ if(!class_exists('WoorvpSession')){
          */
         public function woorvpGetViewProducts(){
 
-            $session_name = $this->woorvpSessionName;
+            $session_name = $this->woorvpSessionName();
 
             if( !isset( $_SESSION[$session_name] ) ){
                 return false;
             }
 
-            return unserialize( $_SESSION[$session_name] );
+            //return unserialize( $_SESSION[$session_name] );
+            return $_SESSION[$session_name] ;
+            //var_dump($_SESSION[$session_name]);
 
         }
-        
+
         /**
          * Here we add products in view list
          *
@@ -73,7 +75,8 @@ if(!class_exists('WoorvpSession')){
             }
 
             // if it is product page create product list
-            $viewed_products = $this->woorvpGetViewProducts;
+            //$viewed_products = $this->woorvpGetViewProducts();
+            $viewed_products = [157,142];
 
             // Check is that product is already in list or not
             if( !in_array( get_the_ID(), $viewed_products ) ){
@@ -87,7 +90,7 @@ if(!class_exists('WoorvpSession')){
             }
 
             // Update session
-            $session_name = $this->woorvpSessionName;
+            $session_name = $this->woorvpSessionName();
             $_SESSION[$session_name] = $viewed_products;
 
         }
